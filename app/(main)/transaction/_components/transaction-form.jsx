@@ -130,10 +130,8 @@ export function AddTransactionForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Receipt Scanner - Only show in create mode */}
       {!editMode && <ReceiptScanner onScanComplete={handleScanComplete} />}
 
-      {/* Type */}
       <div className="space-y-2">
         <label className="text-sm font-medium">Type</label>
         <Select
@@ -153,7 +151,6 @@ export function AddTransactionForm({
         )}
       </div>
 
-      {/* Amount and Account */}
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <label className="text-sm font-medium">Amount</label>
@@ -183,14 +180,7 @@ export function AddTransactionForm({
                   {account.name} (${parseFloat(account.balance).toFixed(2)})
                 </SelectItem>
               ))}
-              <CreateAccountDrawer>
-                <Button
-                  variant="ghost"
-                  className="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground"
-                >
-                  Create Account
-                </Button>
-              </CreateAccountDrawer>
+              <CreateAccountDrawer />
             </SelectContent>
           </Select>
           {errors.accountId && (
@@ -199,7 +189,6 @@ export function AddTransactionForm({
         </div>
       </div>
 
-      {/* Category */}
       <div className="space-y-2">
         <label className="text-sm font-medium">Category</label>
         <Select
@@ -222,7 +211,6 @@ export function AddTransactionForm({
         )}
       </div>
 
-      {/* Date */}
       <div className="space-y-2">
         <label className="text-sm font-medium">Date</label>
         <Popover>
@@ -255,7 +243,6 @@ export function AddTransactionForm({
         )}
       </div>
 
-      {/* Description */}
       <div className="space-y-2">
         <label className="text-sm font-medium">Description</label>
         <Input placeholder="Enter description" {...register("description")} />
@@ -264,7 +251,6 @@ export function AddTransactionForm({
         )}
       </div>
 
-      {/* Recurring Toggle */}
       <div className="flex flex-row items-center justify-between rounded-lg border p-4">
         <div className="space-y-0.5">
           <label className="text-base font-medium">Recurring Transaction</label>
@@ -278,7 +264,6 @@ export function AddTransactionForm({
         />
       </div>
 
-      {/* Recurring Interval */}
       {isRecurring && (
         <div className="space-y-2">
           <label className="text-sm font-medium">Recurring Interval</label>
@@ -304,7 +289,6 @@ export function AddTransactionForm({
         </div>
       )}
 
-      {/* Actions */}
       <div className="flex gap-4">
         <Button
           type="button"
