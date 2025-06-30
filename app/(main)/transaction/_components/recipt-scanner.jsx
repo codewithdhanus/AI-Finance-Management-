@@ -14,15 +14,22 @@ export function ReceiptScanner({ onScanComplete }) {
     loading: scanReceiptLoading,
     fn: scanReceiptFn,
     data: scannedData,
+    error,
   } = useFetch(scanReceipt);
 
   const handleReceiptScan = async (file) => {
+    if (!file) return;
+
     if (file.size > 5 * 1024 * 1024) {
       toast.error("File size should be less than 5MB");
       return;
     }
 
-    await scanReceiptFn(file);
+    try {
+      await scanReceiptFn(file);
+    } catch {
+      toast.error("Failed to scan receipt");
+    }
   };
 
   useEffect(() => {
@@ -30,7 +37,10 @@ export function ReceiptScanner({ onScanComplete }) {
       onScanComplete(scannedData);
       toast.success("Receipt scanned successfully");
     }
-  }, [scanReceiptLoading, scannedData]);
+    if (error) {
+      toast.error(error.message || "Something went wrong while scanning");
+    }
+  }, [scannedData, scanReceiptLoading, error, onScanComplete]);
 
   return (
     <div className="flex items-center gap-4">
@@ -54,12 +64,12 @@ export function ReceiptScanner({ onScanComplete }) {
       >
         {scanReceiptLoading ? (
           <>
-            <Loader2 className="mr-2 animate-spin" />
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             <span>Scanning Receipt...</span>
           </>
         ) : (
           <>
-            <Camera className="mr-2" />
+            <Camera className="mr-2 h-4 w-4" />
             <span>Scan Receipt with AI</span>
           </>
         )}
