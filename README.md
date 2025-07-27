@@ -1,7 +1,8 @@
 
 # Full Stack AI Finance Platform with Next JS, Supabase, Tailwind, Prisma, Inngest, ArcJet, Shadcn UI Tutorial 🔥🔥
 
-![Dashboard Preview](./public/dashboard-preview.png)
+![Dashboard Preview](https://raw.githubusercontent.com/codewithdhanus/AI-Finance-Management-/main/public/dashboard-preview.png)
+
 
 
 
