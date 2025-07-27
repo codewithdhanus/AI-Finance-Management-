@@ -3,7 +3,8 @@
 
 ## 📊 Dashboard Preview
 
-![Dashboard Preview](https://github.com/user-attachments/assets/41fca453-feec-4a7e-bcdc-038a6c5caba6)
+![Dashboard Preview](https://github.com/user-attachments/assets/ca443466-71ee-46de-9b79-0929d2a2221e)
+
 
 
 
